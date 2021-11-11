@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "Back-end for Dentistry Next WebSite",
+  "main": "server.js",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.4",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2",
+    "supervisor": "^0.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "local": "cross-env NODE_ENV=LOCAL supervisor server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
