@@ -1,10 +1,9 @@
 const UserModel = require('../models').UserModel
-const db = require('../../Connectors/MySQLConnector')
 
 module.exports ={
     findOne: async (data) =>{
         try{
-            const user = await db.findOne({ where: data });
+            const user = await UserModel.findOne({ where: data });
             return {success: user}
         }
         catch(err){
@@ -14,8 +13,15 @@ module.exports ={
     findAll: (criteria, projection='*', populate) =>{
 
     },
-    create: (criteria, projection='*', populate) =>{
-        
+    create: async (data) =>{
+        try{
+            await UserModel.create(data)
+            console.log('success')
+            return {success: 'Account registration successful!'}
+        }
+        catch(err){
+            return {err}
+        }
     },
     updateOne: (criteria, projection='*', populate) =>{
 

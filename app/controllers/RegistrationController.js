@@ -1,4 +1,4 @@
-const RegistrationService = require('../services').RegistrationService
+const RegistrationService = require('../services').UserService
 const save = async (request) => {
     try {
         let payload = request.body

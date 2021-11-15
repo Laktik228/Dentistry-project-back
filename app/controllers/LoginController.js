@@ -1,4 +1,4 @@
-const LoginService = require('../services').LoginService
+const LoginService = require('../services').UserService
 // const helper = require('../utils/helper');
 // const send = require('../../Connectors/SengGridConnector')
 const save = async (request) => {
