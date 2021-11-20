@@ -3,8 +3,7 @@ const moment = require('moment');
 module.exports = {
     validateScheme: (schema) => {
         return (req, res, next) => {
-            const {error} = schema.validate(req.body, {abortEarly: false, allowUnknown: true, stripUnknown: true})
-            console.log(req.body)
+            const {error} = schema.validate(req.body ? req.body : req.query, {abortEarly: false, allowUnknown: true, stripUnknown: true})
             if(error){
                 const {details} = error;
                 console.log(req.body, details)

@@ -1,5 +1,6 @@
 const helper = require('../utils/helper');
 const booking = require("../controllers");
+const joi = require('joi');
 const schema = joi.object().keys({
     // name: joi.string().optinal(),
     // surname: joi.string().optional(),

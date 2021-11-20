@@ -3,7 +3,7 @@ const joi = require('joi');
 const helper = require('../utils/helper');
 
 const schema = joi.object().keys({
-    name: joi.string().optinal(),
+    name: joi.string().optional(),
     surname: joi.string().optional(),
     phone: joi.string().length(10).pattern(/^\d+$/).optional(),
     createdAt: joi.date().required(),
