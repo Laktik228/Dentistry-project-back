@@ -11,7 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-require('./app/routes/reservationRoute')(app);
+
+require('./app/routes/ReservationRoute')(app);
+require('./app/routes/LoginRoute')(app);
+require('./app/routes/RegistrationRoute')(app);
 
 app.listen(port, () => {
     console.log()

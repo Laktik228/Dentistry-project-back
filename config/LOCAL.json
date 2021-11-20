@@ -11,8 +11,5 @@
         "USER": "andrewlaktik",
         "PASSWORD": "xmr96dIGjosCYKce2vVM",
         "DATABASE": "Dentistry-local"
-    },
-    "SENDGRID":{
-        "API_KEY": "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"
     }
 }
