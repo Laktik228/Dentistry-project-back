@@ -1,21 +1,15 @@
 const LoginService = require('../services').UserService
-// const helper = require('../utils/helper');
-// const send = require('../../Connectors/SengGridConnector')
+const bcrypt = require("bcrypt")
+
+
 const save = async (request) => {
     try {
-        let toSave = {
-            name: payload.name,
-            // surname: payload.surname,
-            // phone: payload.phoneNumber,
-            // createdAt: payload.createdAt,
-            // email: payload.email,
-            // type: payload.type,
-            // doctorId: payload.doctorId,
-            // customerId: payload.customerId,
-            password: payload.password
-        }
-        const {success} = await LoginService.findOne(toSave)
-        return {success}
+        let payload = request.body
+        const {success} = await LoginService.findOne({email:payload.email})
+        bcrypt.compare(payload.password, success.password, (err, result) => {
+            if(result) return {success}
+            return {success: null, error: err}
+        })
     } catch (err) {
         console.error(err)
         return {success: null, error: err}
