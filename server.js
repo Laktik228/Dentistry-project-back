@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 require('./app/routes/ReservationRoute')(app);
 require('./app/routes/LoginRoute')(app);
 require('./app/routes/RegistrationRoute')(app);
+require('./app/routes/UserProfileRoute')(app);
 
 app.listen(port, () => {
     console.log()
