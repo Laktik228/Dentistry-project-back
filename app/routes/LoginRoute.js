@@ -15,7 +15,7 @@ const schema = joi.object().keys({
 
 module.exports = app => {
     app.post("/api/user/login", helper.validateScheme(schema), async (req, response, next) => {
-        const {success, error} = await booking.LoginController.save(req)
+        const {success, error} = await booking.LoginController.login(req)
         if(error){
             return response.status(400).send({
                 message: error.message || "Bad Request"

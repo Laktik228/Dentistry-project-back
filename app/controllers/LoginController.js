@@ -2,7 +2,7 @@ const LoginService = require('../services').UserService
 const bcrypt = require("bcrypt")
 
 
-const save = async (request) => {
+const login = async (request) => {
     try {
         let payload = request.body
         const {success} = await LoginService.findOne({email:payload.email})
@@ -17,5 +17,5 @@ const save = async (request) => {
 }
 
 module.exports = {
-    save
+    login
 }
