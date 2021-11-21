@@ -8,7 +8,7 @@
     },
     "DB":{
         "HOST": "localhost",
-        "USER": "andrewlaktik",
+        "USER": "root",
         "PASSWORD": "xmr96dIGjosCYKce2vVM",
         "DATABASE": "Dentistry-local"
     }

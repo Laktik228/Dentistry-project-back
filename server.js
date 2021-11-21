@@ -6,15 +6,15 @@ const config = require('config')
 const AppConfig = config.get("App")
 const port = AppConfig.PORT || 3000;
 const app = express();
+const routes = require('./app/routes');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-require('./app/routes/ReservationRoute')(app);
-require('./app/routes/LoginRoute')(app);
-require('./app/routes/RegistrationRoute')(app);
+for(let route of Object.keys(routes)){
+    routes[route](app)
+}
 
 app.listen(port, () => {
     console.log()

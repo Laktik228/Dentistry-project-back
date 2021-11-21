@@ -6,11 +6,16 @@ const dbConfig = require("config").get('DB');
 
 
 const init = async () => {
-  const conn =  await mysql.createConnection({host: dbConfig.HOST, port: 3306, user: 'root', password: 'Sat61sys'});
-  await conn.query(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.DATABASE}\`;`);
-  await conn.query(`CREATE USER IF NOT EXISTS '${dbConfig.USER}'@'${dbConfig.HOST}' IDENTIFIED BY '${dbConfig.PASSWORD}';`);
-  await conn.query(`GRANT ALL ON *.* TO '${dbConfig.USER}'@'${dbConfig.HOST}';`)
-  await conn.end();
+  try{
+    const conn =  await mysql.createConnection({host: dbConfig.HOST, port: 3306, user: dbConfig.USER, password: dbConfig.PASSWORD});
+    await conn.query(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.DATABASE}\`;`);
+    await conn.end();
+  }
+  catch(err){
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    console.log(err)
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+  }
 }
 
 init();
@@ -24,6 +29,7 @@ const SequelizeInstance = new Sequelize(dbConfig.DATABASE,dbConfig.USER,dbConfig
       acquire: 30000,
       idle: 10000
     },
-  operatorsAliases: false
+  operatorsAliases: false,
+  logging: false
 })
 module.exports = {SequelizeInstance, Sequelize};
