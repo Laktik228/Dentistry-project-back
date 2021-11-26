@@ -10,7 +10,7 @@ const schema = joi.object().keys({
 
 module.exports = app => {
 
-    app.get("/api/user/:userId", async (req, response, next) => {
+    app.get("/api/user/:id", async (req, response, next) => {
         const {success, error} = await controllers.UserProfileController.find(req.params)
         if(error){
             return response.status(400).send({

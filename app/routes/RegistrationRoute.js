@@ -6,11 +6,11 @@ const schema = joi.object().keys({
     name: joi.string().required(),
     surname: joi.string().required(),
     phone: joi.string().length(10).pattern(/^\d+$/).optional(),
-    createdAt: joi.date().required(),
+    createdAt: joi.date().optional(),
     email: joi.string().email().required(),
     type: joi.string().required(),
-    doctorId: joi.string().optional(),
-    customerId: joi.string().optional(),
+    doctorId: joi.string().optional().allow(null, ''),
+    customerId: joi.string().optional().allow(null, ''),
     password: joi.string().required()
 
 });
