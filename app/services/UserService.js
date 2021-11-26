@@ -3,7 +3,8 @@ const UserModel = require('../models').UserModel
 module.exports ={
     findOne: async (data) =>{
         try{
-            const user = await UserModel.findOne({ where: data });
+            const user = await UserModel.findOne({ where: data, attributes: [projection] });
+            delete user.password
             return {success: user}
         }
         catch(err){
@@ -16,7 +17,6 @@ module.exports ={
     create: async (data) =>{
         try{
             await UserModel.create(data)
-            console.log('success')
             return {success: 'Account registration successful!'}
         }
         catch(err){

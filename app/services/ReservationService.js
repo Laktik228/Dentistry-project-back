@@ -1,11 +1,23 @@
 const ReservationModel = require('../models').ReservationModel
 
 module.exports ={
-    findOne: (criteria, projection='*', populate) =>{
-        
+    findOne: async (criteria, projection='*', populate) =>{
+        try{
+            const appointments = await ReservationModel.findOne({where: criteria, attributes: [projection]})
+            return {success: appointments}
+        }
+        catch(err){
+            return {err}
+        }
     },
-    findAll: (criteria, projection='*', populate) =>{
-
+    findAll: async (criteria, projection='*', populate) =>{
+        try{
+            const appointments = await ReservationModel.findAll({where: criteria, attributes: [projection]})
+            return {success: appointments}
+        }
+        catch(err){
+            return {err}
+        }
     },
     create: async (data) =>{
         try{
@@ -17,8 +29,14 @@ module.exports ={
             return {err}
         }
     },
-    updateOne: (criteria, projection='*', populate) =>{
-
+    updateOne: async (criteria, data, populate) =>{
+        try{
+            let appointment = await ReservationModel.update(data, criteria)
+            return {success: appointment}
+        }
+        catch(err){
+            return {err}
+        }
     },
     updateAll:(criteria, projection='*', populate) =>{
 

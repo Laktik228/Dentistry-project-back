@@ -21,6 +21,14 @@ const Reservation = db.SequelizeInstance.define('reservations', {
         type: db.Sequelize.DATE,
         allowNull: false
     },
+    customerId: {
+        type: db.Sequelize.DATE,
+        allowNull: true
+    },
+    assignedDoctorId: {
+        type: db.Sequelize.STRING,
+        allowNull: true
+    },
     email: {
         type: db.Sequelize.STRING,
         allowNull: false

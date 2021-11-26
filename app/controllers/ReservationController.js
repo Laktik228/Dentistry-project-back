@@ -4,12 +4,24 @@ const helper = require('../utils/helper');
 // const send = require('../../Connectors/SengGridConnector')
 const nodemailer = require('nodemailer');
 
+const getAppointments = async (request) => {
+    try{
+        const payload = request.query
+        const {success} = await ReservationService.findAll(payload)
+        return {success}
+    }
+    catch(err){
+        console.err(err)
+        return {err}
+    }
+} 
+
 const getAppointmentById = async (request) => {
     try{
         if(!request.query.id){
             throw 'No ID provided!'
         }
-        const payload = request.payload
+        const payload = request.query
         const {success} = await ReservationService.findOne(payload)
         return {success}
     }
@@ -22,7 +34,11 @@ const getAppointmentById = async (request) => {
 const updateAppointment = async (request) => {
     try{
         const payload = request.payload
-        const {success} = await ReservationService.updateOne(payload)
+        if(payload.id){
+            const {success} = await ReservationService.updateOne(payload)
+            return success  
+        }
+        return {err: 'Did no find an appointment with this id'}
     }
     catch(err){
         console.err(err)
@@ -99,5 +115,7 @@ const save = async (request) => {
 
 module.exports = {
     save,
-    updateAppointment
+    updateAppointment,
+    getAppointmentById,
+    getAppointments
 }
