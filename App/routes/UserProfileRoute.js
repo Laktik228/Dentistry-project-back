@@ -10,8 +10,8 @@ const schema = joi.object().keys({
 
 module.exports = app => {
 
-    app.post("/api/user/:userId", helper.validateScheme(schema), async (req, response, next) => {
-        const {success, error} = await controllers.UserProfileController.save(req)
+    app.get("/api/user/:userId", async (req, response, next) => {
+        const {success, error} = await controllers.UserProfileController.find(req.params)
         if(error){
             return response.status(400).send({
                 message: error.message || "Bad Request"
