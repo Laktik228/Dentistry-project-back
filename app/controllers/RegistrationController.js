@@ -7,7 +7,7 @@ const save = async (request) => {
     try {
         let payload = request.body
 
-        bcrypt.hash(payload.password, saltRounds, (err, hash) => {
+        bcrypt.hash(payload.password, saltRounds, async (err, hash) => {
             if(err) return {error:err}
 
             let createdAt = new Date() 
