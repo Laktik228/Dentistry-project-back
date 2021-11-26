@@ -31,13 +31,18 @@ const Users = db.SequelizeInstance.define('users', {
     },
     type: {
         type: db.Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        default: 'PATIENT'
     },
     doctorId: {
         type: db.Sequelize.STRING,
         allowNull: true
     },
     staffId: {
+        type: db.Sequelize.STRING,
+        allowNull: true
+    },
+    education: {
         type: db.Sequelize.STRING,
         allowNull: true
     },
